@@ -106,8 +106,8 @@ Follow these steps to get the app running on your local machine:
      ```
    - Restore NuGet packages by running: `dotnet restore`
    - Build the project: `dotnet build`
-   - Run the API server: `dotnet run`
-     - The API will start on `https://localhost:5001` (or check the console for the exact URL).
+   - Run the API server: `dotnet run --launch-profile https`
+     - The API will start on `https://localhost:3000` (or check the console for the exact URL).
 
 4. **Configure the frontend**:
    - Open a new terminal and navigate to the `WeCareAng` folder.
@@ -118,7 +118,7 @@ Follow these steps to get the app running on your local machine:
 5. **Access the application**:
    - Open your web browser and navigate to `http://localhost:4200`.
    - You can now register as a new user, log in, browse coaches, and make bookings.
-   - The backend API endpoints are accessible at `https://localhost:5001/api/...`
+   - The backend API endpoints are accessible at `https://localhost:3000/api/...`
 
 ## API Endpoints
 
@@ -131,7 +131,7 @@ The backend provides the following main API endpoints:
 - `POST /api/bookings` - Create a booking
 - `GET /api/users/{id}/bookings` - Get user bookings
 
-For a full list, refer to the Swagger documentation at `https://localhost:5001/swagger` when the API is running.
+For a full list, refer to the Swagger documentation at `https://localhost:3000/swagger` when the API is running.
 
 ## Database Schema
 
@@ -175,7 +175,7 @@ Please ensure your code follows the project's coding standards and includes appr
 ## Troubleshooting
 
 - **Database connection issues**: Double-check your connection string in `appsettings.json`
-- **Port conflicts**: Ensure ports 4200 (Angular) and 5001 (.NET) are available
+- **Port conflicts**: Ensure ports 4200 (Angular) and 3000 (.NET) are available
 - **Build errors**: Run `dotnet restore` and `npm install` to ensure all dependencies are installed
 - **CORS issues**: The API is configured to allow requests from `http://localhost:4200`
 
