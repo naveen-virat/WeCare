@@ -1,0 +1,20 @@
+<div class="card-deck bmi" style="width: 600px;padding-top: 20px;" *ngFor="let details of scheduleDetails">
+    <div class="card bmi bg-primary" style="height: min-content;padding-top: 15px;">
+        <div class="card-body" style="padding: 0%;">
+            <h4>Appointment Date: </h4>
+            <h4>{{details.appointmentDate}}</h4>
+            <h5>Slot: {{details.slot}}</h5>
+        </div>
+        <div class="card-body" style="padding: 0%;">
+            <h6>Booking Id: {{details.id}}</h6>
+            <h6 style="padding-bottom:10px">User Id: {{details.userId}}</h6>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="scheduleDetails.length==0" style="padding-top: 100px;">
+    <div class="text-center">
+        <img [src]="imgUrl" style="height: 100px;" class="img-fluid" alt="" />
+        <h1>{{msg}}</h1>
+    </div>
+</div>

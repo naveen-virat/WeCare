@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:black">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/home']">WeCare</a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+            <span class="navbar-toggler-icon"></span>
+        <!-- </button> -->
+            <div class="navbar-brand" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" *ngIf="uProfile" [routerLink]="['user/profile']" style="padding-left:20px" aria-current="page">View Profile</a>
+                    <a class="nav-link" *ngIf="uProfile" [routerLink]="['user/appointments']" style="padding-left:20px">My Appointments</a>
+                    <a class="nav-link" *ngIf="cProfile" [routerLink]="['coach/profile']" style="padding-left:20px">View Profile</a>
+                    <a class="nav-link" *ngIf="cProfile" [routerLink]="['/coach/home']" style="padding-left:20px">My Schedules</a>
+                    <a class="nav-link" *ngIf="logout" [routerLink]="" (click)="logoutFn()" style="padding-left:20px">Logout</a>
+                    <a class="nav navbar-nav navbar-right" [routerLink]="['/home']" style="padding-left:20px">Call Us: 080 2233447</a>
+                </div>
+                
+            </div>
+    </div>
+</nav>
+
+<div class="container-fluid content">
+    <router-outlet></router-outlet>
+</div>
+

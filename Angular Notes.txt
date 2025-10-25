@@ -1,0 +1,43 @@
+set NODE_OPTIONS=--openssl-legacy-provider
+
+JsonServerPackage:
+npm install -g json-server
+
+Go to package.json in scripts:
+"server": "json-server --watch db.json --port 3000"
+
+for xyzpharma backend:
+json-server --watch db.json --4000
+
+SolarHeaterAllocation
+npm run server
+
+for banking:
+npm run server
+
+for WecareHospitalDomain 
+backend: 
+json-server --watch db.json --port 3000
+
+
+cd C:\Users\bnave\MyPractice\Angular\WeCare
+json-server --watch db.json --port 3000
+
+------------------------------------------------------------------------
+ng new project-name
+ng serve -open
+ng generate component <component-name>
+ng generate service service-name 
+ng generate directive directive-name
+-------------------------------------------------------------------------
+SELECT
+    CityID, 
+    CityName,
+    LatestRecordedPopulation
+FROM Application.Cities
+    FOR JSON PATH, 
+        INCLUDE_NULL_VALUES
+GO
+
+https://freesvg.org/
+https://www.freepik.com/icon/female-user_4515630

@@ -1,0 +1,20 @@
+<div style="padding-top: 30px;"></div>
+<div class="card bg-primary bmi" style="height: min-content;padding-top: 20px;padding-bottom: 20px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <img [src]="img" style="height: 200px;" alt="responsive webite" class="img-fluid rounded-circle">
+            </div>
+            <div style="padding-top: 20px;" class="col-xl-6 col-lg-6 col-md-6">
+                <h4>{{myUser.name}}</h4>
+                <h6>User Id: {{myUser.userId}}</h6>
+                <h6>Date of Birth: {{myUser.dateOfBirth}}</h6>
+                <h6>Email Id: {{myUser.emailId}}</h6>
+                <h6>Mobile No: {{myUser.mobileNumber}}</h6>
+                <h6>Address: {{myUser.city}}, {{myUser.state}}, {{myUser.country}}</h6>
+                <h6>Pincode: {{myUser.pincode}}</h6>
+                <a href="/user/home" class="btn btn-primary">Go Back</a>
+            </div>
+        </div>
+    </div>
+</div>

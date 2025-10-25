@@ -1,0 +1,336 @@
+<div style="padding-top: 30px"></div>
+
+<!-- User SignUp form -->
+<div *ngIf="formDisplay" style="padding-top: 10px" [hidden]="userSignupSuccess">
+    <div class="card bg-primary bmi" style="height: min-content;padding-top: 20px;padding-bottom: 20px;color: white;">
+        <div class="container-fluid">
+            <form class="form-horizontal" [formGroup]="userregisterForm">
+                <div class="row center">
+                    <div class="text-center">
+                        <img [src]="c.userImg" style="height: 70px" class="img-fluid" alt="" />
+                        <h1 style="color: white; padding-left: 10px">User Profile</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6" style="padding-left: 20px">
+                        <div class="form-group">
+                            <label for="name" class="col-xs-4 control-label" style="text-align: left">Name</label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" style="width: 200px"
+                                       [ngClass]="{ valid: userregisterForm.controls['name'].valid, invalid: userregisterForm.controls['name'].invalid && !userregisterForm.controls['name'].pristine}"
+                                       formControlName="name" />
+                                <div *ngIf="userregisterForm.controls['name'].errors && userregisterForm.controls['name'].dirty">
+                                    <div *ngIf="userregisterForm.controls['name'].errors?.['pattern'] || userregisterForm.controls['name'].errors?.['required']"
+                                         style="color:red">
+                                        {{c.nameError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfBirth" class="col-xs-4 control-lanel" style="text-align: left">
+                                Date of Birth
+                            </label>
+                            <div class="col-xs-6">
+                                <input type="date" class="form-control" style="width: 200px"
+                                       [ngClass]="{
+                                       valid: userregisterForm.controls['dateOfBirth'].valid,
+                                       invalid:
+                                       userregisterForm.controls['dateOfBirth'].invalid && !userregisterForm.controls['dateOfBirth'].pristine}" formControlName="dateOfBirth" />
+                                <div *ngIf="userregisterForm.controls['dateOfBirth'].errors && userregisterForm.controls['dateOfBirth'].dirty">
+                                    <div *ngIf="userregisterForm.controls['dateOfBirth'].invalid || userregisterForm.controls['dateOfBirth'].errors['required']"
+                                         style="color:red">
+                                        Age should be between 20 and 100 years
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobilenumber" class="col-xs-4 control-label"
+                                   style="text-align: left; padding-top:8px">Mobile No:</label>
+                            <div class="col-xs-6">
+                                <input type="number" class="form-control" min="1000000000" max="9999999999"
+                                       style="width: 200px"
+                                       [ngClass]="{
+                                       valid: userregisterForm.controls['mobileNumber'].valid,
+                                       invalid:
+                                       userregisterForm.controls['mobileNumber'].invalid && !userregisterForm.controls['mobileNumber'].pristine }"
+                                       formControlName="mobileNumber" />
+                                <div *ngIf="userregisterForm.controls['mobileNumber'].errors && userregisterForm.controls['mobileNumber'].dirty">
+                                    <div *ngIf="userregisterForm.controls['mobileNumber'].errors?.['min'] || userregisterForm.controls['mobileNumber'].errors?.['max'] || userregisterForm.controls['mobileNumber'].errors?.['required']"
+                                         style="color: red">
+                                        {{ c.mobileNumberError }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode" class="col-xs-4 control-label" style="text-align: left">
+                                Pincode
+                            </label>
+                            <div class="col-xs-6">
+                                <input type="number" class="form-control" min="100000" max="999999" style="width: 200px"
+                                       [ngClass]="{valid: userregisterForm.controls['pincode'].valid,Invalid:userregisterForm.controls['pincode'].invalid && !userregisterForm.controls['pincode'].pristine}"
+                                       formControlName="pincode" />
+                                <div *ngIf="userregisterForm.controls['pincode'].errors && userregisterForm.controls['pincode'].dirty">
+
+                                    <div *ngIf="userregisterForm.controls['pincode'].errors?.['min'] || userregisterForm.controls['pincode'].errors?.['max'] || userregisterForm.controls['pincode'].errors?.['required']"
+                                         style="color: red">
+                                        {{ c.pinCodeError }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="state" class="col-xs-4 control-label" style="text-align: left">State</label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" style="width: 200px"
+                                       [ngClass]="{ valid: userregisterForm.controls['state'].valid, Invalid: userregisterForm.controls['state'].invalid && !userregisterForm.controls['state'].pristine}"
+                                       formControlName="state" />
+                                <div *ngIf="userregisterForm.controls['state'].errors && userregisterForm.controls['state'].dirty">
+                                    <div *ngIf="userregisterForm.controls['state'].errors?.['pattern'] || userregisterForm.controls['state'].errors?.['required']"
+                                         style="color:red">
+                                        {{c.stateError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label for="password" class="col-xs-4 control-label"
+                                   style="text-align: left">Password</label>
+                            <div class="col-xs-6">
+                                <input type="password" class="form-control" style="width: 200px"
+                                       [ngClass]="{
+                                           valid: userregisterForm.controls['password'].valid,
+                                           invalid:
+                                           userregisterForm.controls['password'].invalid && !userregisterForm.controls['password'].pristine}" formControlName="password" />
+                                <div *ngIf="userregisterForm.controls['password'].errors && userregisterForm.controls['password'].dirty">
+                                    <div *ngIf="userregisterForm.controls['password'].errors?.['pattern'] || userregisterForm.controls['password'].errors?.['required']"
+                                         style="color: red;">
+                                        {{c.passwordError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <label class="col-xs-4 control-label" style="text-align: left">Gender</label>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <input type="radio" style="height: auto;" name="gender" id="inlineRadio1" value="M"
+                                           formControlName="gender" />
+                                    <label>Male</label>
+                                    <input type="radio" style="height: auto;" name="gender" id="inlineRadio2" value="F"
+                                           formControlName="gender" />
+                                    <label>FeMale</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-xs-4 control-label" style="text-align: left">
+                                Email
+                            </label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" style="width: 200px"
+                                       [ngClass]="{ valid: userregisterForm.controls['email'].valid, Invalid: userregisterForm.controls['email'].invalid && !userregisterForm.controls['email'].pristine}"
+                                       formControlName="email" />
+                                <div *ngIf="userregisterForm.controls['email'].errors && userregisterForm.controls['email'].dirty">
+                                    <div *ngIf="userregisterForm.controls['email'].errors?.['email'] || userregisterForm.controls['email'].errors?.['required']"
+                                         style="color:red">
+                                        {{c.emailError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="city" class="col-xs-4 control-label" style="text-align: left">
+                                City
+                            </label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" style="width: 200px"
+                                       [ngClass]="{ valid: userregisterForm.controls['city'].valid, Invalid: userregisterForm.controls['city'].invalid && !userregisterForm.controls['city'].pristine}"
+                                       formControlName="city" />
+                                <div *ngIf="userregisterForm.controls['city'].errors && userregisterForm.controls['city'].dirty">
+                                    <div *ngIf="userregisterForm.controls['city'].errors?.['pattern'] || userregisterForm.controls['city'].errors?.['required']"
+                                         style="color:red">
+                                        {{c.cityError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country" class="col-xs-4 control-label" style="text-align: left">
+                                Country
+                            </label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" style="width: 200px"
+                                       [ngClass]="{ valid: userregisterForm.controls['country'].valid, Invalid: userregisterForm.controls['country'].invalid && !userregisterForm.controls['country'].pristine}"
+                                       formControlName="country" />
+                                <div *ngIf="userregisterForm.controls['country'].errors && userregisterForm.controls['country'].dirty">
+                                    <div *ngIf="userregisterForm.controls['country'].errors?.['pattern'] || userregisterForm.controls['country'].errors?.['required']"
+                                         style="color:red">
+                                        {{c.countryError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center" style="padding-top: 20px">
+                    <button type="button" (click)="userRegister()"
+                            style="width: 200px; background-color: rgb(166, 241, 166);" class="btn btn-primary"
+                            [disabled]="!userregisterForm.valid">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- User Account Successfull Div -->
+
+<div class="text-center" [hidden]="!userSignupSuccess">
+    <img [src]="c.userImg" style="height: 90px" class="img-fluid" alt="" />
+    <h1>{{ c.accountCreated }}</h1>
+    <h3>Your User Id is {{ userId }}</h3>
+    <a href="/login/users" style="width: 170px; height: 40px; padding: 0px"
+       class="btn btn-primary btn-lg btn-block">Login Now</a>
+</div>
+
+
+
+
+<!-- CoachRegistrationform -->
+
+<div *ngIf="!formDisplay" style="padding-top: 10px" [hidden]="coachSignupSuccess">
+    <div class="card bg-primary bmi" style="height: min-content;padding-top: 20px;padding-bottom: 20px;color: white;">
+        <div class="container-Fluids">
+            <form class="form-horizontal" [formGroup]="coachregisterForm">
+                <div class="row center">
+                    <div class="text-center">
+                        <img [src]="c.coachImg" style="height: 90px; padding: 0px" class="img-fluid" alt="" />
+                    </div>
+                    <h2 style="color: white; padding-left: 10px; padding-top: 20px">
+                        Life Coach Profile
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6" style="padding-left: 20px">
+                        <div class="form-group">
+                            <label for="name" class="col-xs-4 control-label" style="text-align: left">Name</label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" style="width: 200px"
+                                       [ngClass]="{ valid: coachregisterForm.controls['name'].valid, invalid: coachregisterForm.controls['name'].invalid && !coachregisterForm.controls['name'].pristine}"
+                                       formControlName="name" />
+                                <div *ngIf="coachregisterForm.controls['name'].errors && coachregisterForm.controls['name'].dirty">
+                                    <div *ngIf="coachregisterForm.controls['name'].errors?.['pattern'] || coachregisterForm.controls['name'].errors?.['required']"
+                                         style="color:red">
+                                        {{c.nameError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfBirth" class="col-xs-4 control-lanel" style="text-align: left">
+                                Date of Birth
+                            </label>
+                            <div class="col-xs-6">
+                                <input type="date" class="form-control" style="width: 200px"
+                                       [ngClass]="{valid: coachregisterForm.controls['dateOfBirth'].valid,invalid:coachregisterForm.controls['dateOfBirth'].invalid && !coachregisterForm.controls['dateOfBirth'].pristine}" formControlName="dateOfBirth" />
+                                <div *ngIf="coachregisterForm.controls['dateOfBirth'].errors && coachregisterForm.controls['dateOfBirth'].dirty">
+                                    <div *ngIf="coachregisterForm.controls['dateOfBirth'].invalid || coachregisterForm.controls['dateOfBirth'].errors['required']"
+                                         style="color:red">
+                                        Age should be between 20 and 100 years
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobilenumber" class="col-xs-4 control-label"
+                                   style="text-align: left; padding-top:8px">Mobile No:</label>
+                            <div class="col-xs-6">
+                                <input type="number" class="form-control" min="1111111111" max="9999999999"
+                                       style="width: 200px"
+                                       [ngClass]="{valid: coachregisterForm.controls['mobileNumber'].valid,invalid:coachregisterForm.controls['mobileNumber'].invalid && !coachregisterForm.controls['mobileNumber'].pristine }"
+                                       formControlName="mobileNumber" />
+                                <div *ngIf="coachregisterForm.controls['mobileNumber'].errors && coachregisterForm.controls['mobileNumber'].dirty">
+                                    <div *ngIf="coachregisterForm.controls['mobileNumber'].errors?.['min'] || coachregisterForm.controls['mobileNumber'].errors?.['max'] || coachregisterForm.controls['mobileNumber'].errors?.['required']"
+                                         style="color: red">
+                                        {{ c.mobileNumberError }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label for="password" class="col-xs-4 control-label"
+                                   style="text-align: left">Password</label>
+                            <div class="col-xs-6">
+                                <input type="password" class="form-control" style="width: 200px"
+                                       [ngClass]="{valid: coachregisterForm.controls['password'].valid,invalid:coachregisterForm.controls['password'].invalid && !coachregisterForm.controls['password'].pristine}" formControlName="password" />
+                                <div *ngIf="coachregisterForm.controls['password'].errors && coachregisterForm.controls['password'].dirty">
+                                    <div *ngIf="coachregisterForm.controls['password'].errors?.['pattern'] || coachregisterForm.controls['password'].errors?.['required']"
+                                         style="color: red;">
+                                        {{c.passwordError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <label class="col-xs-4 control-label" style="text-align: left">Gender</label>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <input type="radio" style="height: auto;" name="gender" id="inlineRadio3" value="M"
+                                           formControlName="gender" />
+                                    <label>Male</label>
+                                    <input type="radio" style="height: auto;" name="gender" id="inlineRadio4" value="F"
+                                           formControlName="gender" />
+                                    <label>FeMale</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="speciality" class="col-xs-4 control-label"
+                                   style="text-align: left">speciality</label>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" style="width: 200px"
+                                       [ngClass]="{ valid: coachregisterForm.controls['speciality'].valid, invalid: coachregisterForm.controls['speciality'].invalid && !coachregisterForm.controls['speciality'].pristine}"
+                                       formControlName="speciality" />
+                                <div *ngIf="coachregisterForm.controls['speciality'].errors && coachregisterForm.controls['speciality'].dirty">
+                                    <div *ngIf="coachregisterForm.controls['speciality'].errors?.['pattern'] || coachregisterForm.controls['speciality'].errors?.['required']"
+                                         style="color:red">
+                                        {{c.specialityError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    
+                    <div class="text-center">
+                        <button type="button" style="width: 300px; background-color: rgb(166, 241, 166)"
+                                (click)="coachRegister()" class="btn btn-primary" [disabled]="!coachregisterForm.valid">
+                            Register
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="text-center" [hidden]="!coachSignupSuccess">
+    <img [src]="c.coachImg" style="height: 90px" class="img-fluid" alt="" />
+    <h1>{{ c.accountCreated}}</h1>
+    <h3>
+        Your Coach Id is {{coachId}}
+    </h3>
+    <a href="/login/coaches" style="width: 170px; height: 40px; padding: 0px"
+       class="btn btn-primary btn-lg btn-block">Login Now</a>
+</div>

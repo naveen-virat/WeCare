@@ -1,0 +1,32 @@
+.bg-primary {
+  background-color: #f9f6f6 !important;
+}
+
+.valid {
+  border-left: 5px solid #42A948;
+}
+
+.invalid {
+  border-left: 5px solid #a94442;
+}
+
+.bmi {
+  margin-left: 35%;
+  margin-right: 25%;
+}
+
+.mmi {
+  margin-left: 30%;
+  margin-right: 25%;
+}
+
+.bg-secondary {
+  background-color: #0e0d0d !important;
+}
+
+.label {
+  display: inline;
+}
+
+
+

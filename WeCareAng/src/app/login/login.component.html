@@ -1,0 +1,42 @@
+<div style="padding-top: 70px"></div>
+<div class="card bg-primary bmi" style="height: min-content; padding: 20px; width: 400px">
+    <form class="form-horizontal" [formGroup]="loginForm">
+        <img class="card-img-top" style="padding: 0px; height: 90px" [src]="loginImg" alt="Card image cap" />
+        <div class="card-body" style="padding-top: 0">
+            <h3 style="color: white; text-align: center">{{ loginTitle }}</h3>
+        </div>
+        <div class="card-body" style="padding: 0%; padding-bottom: 20px">
+            <input aria-label="user" type="text" class="form-control" style="width: 300px" [placeholder]="placeholder"
+                   [ngClass]="{valid: loginForm.controls['id'].valid,invalid:loginForm.controls['id'].invalid && !loginForm.controls['id'].pristine }"
+                   formControlName="id" />
+            <div *ngIf="loginForm.controls['id'].errors && loginForm.controls['id'].dirty">
+                <div *ngIf="loginForm.controls['id'].errors?.['required']" style="color: red">
+                    {{ c.fieldRequired }}
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body" style="padding: 0; padding-bottom: 20px">
+            <!-- <div class="col-xs-6"> -->
+            <input type="password" class="form-control" style="width: 300px" placeholder="password"
+                   [ngClass]="{valid: loginForm.controls['password'].valid,Invalid:loginForm.controls['password'].invalid && !loginForm.controls['password'].pristine}"
+                   formControlName="password" />
+            <div *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].dirty">
+                <div *ngIf="loginForm.controls['password'].errors?.['pattern'] || loginForm.controls['password'].errors?.['required']"
+                     style="color: red">
+                    {{ c.passwordError }}
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+        <div class="center" style="width: 200px; margin: 0 auto;">
+            <button type="button" style="width: 200px" (click)="login()" class="btn btn-primary"
+                    [disabled]="!loginForm.valid">
+                Login
+            </button>
+        </div>
+        <div *ngIf="loginFailed">
+            <h6 style="color: red; padding-top: 10px">{{ c.invalid }}</h6>
+        </div>
+    </form>
+</div>

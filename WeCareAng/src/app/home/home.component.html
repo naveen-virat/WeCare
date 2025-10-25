@@ -1,0 +1,31 @@
+<h1 style="padding-left: 250px;padding-top: 20px;padding-bottom: 50px;">{{c.homeMessage}}</h1>
+
+<!-- <div class="card-deck bmi" style="width: 30rem;"> -->
+<div class="row" style="padding-left:300px">
+    <div class="col-sm-4">
+        <div class="card bg-primary" style="height: min-content;padding: 20px;">
+            <div class="text-center">
+                <img class="card-img-top" style="height: 90px;" [src]="c.coachImg" alt="Card image cap">
+            </div>
+            <div class="card-body" style="padding-top: 5%;">
+                <a href="/login/coaches" class="btn btn-primary btn-lg btn-block">Login as a Coach</a>
+            </div>
+            <div class="card-body" style="padding-top: 5%;">
+                <a href="/signup/coaches" class="btn btn-primary btn-lg btn-block">Join as a Coach</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card bg-primary" style="height: min-content; padding: 20px;">
+            <div class="text-center">
+                <img class="card-img-top" style="height: 90px;" [src]="c.userImg" alt="Card image cap">
+            </div>
+            <div class="card-body" style="padding-top: 5%;">
+                <a href="/login/users" class="btn btn-primary btn-lg btn-block">Login as a User</a>
+            </div>
+            <div class="card-body" style="padding-top: 5%;">
+                <a href="/signup/users" class="btn btn-primary btn-lg btn-block">Join as a User</a>
+            </div>
+        </div>
+    </div>
+</div>

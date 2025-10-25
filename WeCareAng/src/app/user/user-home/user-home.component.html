@@ -1,0 +1,124 @@
+<div class="row row-cols-2 g-3" style="padding-top: 20px" [hidden]="showAppointmentForm || appointmentSuccess">
+    <div class="col" *ngFor="let coach of coachArray">
+        <div style="padding-top: 30px"></div>
+        <div class="card bg-primary mmi" style="height: min-content; padding-top: 20px; padding-bottom: 20px; border-radius: 20px">
+            <div class="container-fluid" style="color: black">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <img *ngIf="coach.gender == 'M'" [src]="maleImg" style="height: 200px" alt="responsive webite"
+                             class="img-fluid rounded-circle" />
+                        <img *ngIf="coach.gender == 'F'" [src]="femaleImg" style="height: 200px" alt="responsive webite"
+                             class="img-fluid rounded-circle" />
+                    </div>
+                    <div style="padding-top: 20px" class="col-xl-6 col-lg-6 col-md-6">
+                        <h4>{{ coach.name }}</h4>
+                        <h5>Coach Id: {{ coach.coachId }}</h5>
+                        <h6>Date of Birth: {{ coach.dateOfBirth }}</h6>
+                        <h6>Mobile No: {{coach.mobileNumber }}</h6>
+                        <h6>Speciality: {{ coach.speciality }}</h6>
+                        <button (click)="bookAppointment(coach.coachId)">
+                            Book an Appointment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="showAppointmentForm" style="padding-top: 35px" [hidden]="!showAppointmentForm">
+    <div class="card bg-secondary mmi" style="height: min-content;padding-top: 20px;padding-bottom: 20px;color: white;">
+        <div class="container-fluid">
+            <form class="form-horizontal" [formGroup]="appointmentForm">
+                <div class="row center">
+                    <div class="text-center">
+                        <img [src]="c.notepadImg" style="height: 50px;padding-left: 20px;" class="img-fluid" alt="" />
+                        <h3 style="color: white; padding-left: 10px">
+                            Proceed with your Appointment
+                        </h3>
+                    </div>                    
+                </div>
+                <div class="form-group" style="padding-top: 15px;">
+                    <label for="dateOfAppointment" class="col-xs-6 control-label" style="text-align: left;padding-left:50px">
+                        Date of Appointment
+                    </label>
+                    <div class="col-xs-6">
+                        <input type="date" class="form-control" style="width: 200px" [ngClass]="{ valid: appointmentForm.controls['appointmentDate'].valid,invalid:appointmentForm.controls['appointmentDate'].invalid && !appointmentForm.controls['appointmentDate'].pristine}"
+                               formControlName="appointmentDate" />
+                        <div *ngIf="appointmentForm.controls['appointmentDate'].errors && appointmentForm.controls['appointmentDate'].dirty">
+                            <div *ngIf="appointmentForm.controls['appointmentDate'].invalid ||  appointmentForm.controls['appointmentDate'].errors?.['required'] || appointmentForm.controls['appointmentDate'].errors?.['dateCalculator']"
+                                 style="color: red">
+                                {{c.appointmentDateError }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <label  style="padding-left:35px">Preffered Slot</label>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6" style="padding-left: 100px;">
+                            <div class="form-check">
+                                <input type="radio" name="slot" style="height: auto;" id="inlineRadio1" value="9 AM to 10 AM"
+                                       formControlName="slot" />
+                                <label class="radio-inline" style="font-size: small;padding-left: 10px;" for="inlineRadio1">
+                                    9 AM to 10 AM
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" name="slot" style="height: auto;" id="inlineRadio2" value="10 AM to 11 AM"
+                                formControlName="slot" />
+                                <label class="radio-inline" style="font-size: small; padding-left: 10px;" for="inlineRadio2">
+                                    10 AM to 11AM
+                                </label>
+                            </div>
+                            <div class="form-check ">
+                                <input type="radio" name="slot" style="height: auto;" id="inlineRadio1" value="11 AM to 12 PM"
+                                formControlName="slot" />
+                                <label class="radio-inline" style="font-size: small;padding-left: 10px;" for="inlineRadiol">11 AM to 12 PM</label>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="form-check">
+                                <input type="radio" name="slot" style="height: auto;" id="inlineRadio2" value="2 PM to 3 PM"
+                                formControlName="slot" />
+                                <label class="radio-inline" style="font-size: small;padding-left: 10px;" for="inlineRadio2">2 PM to 3 PM</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" name="slot" style="height: auto;" id="inlineRadio1" value="3 PM to 4 PM" formControlName="slot" />
+                                <label class="radio-inline" style="font-size: small; padding-left: 10px;" for="inlineRadio1">3 PM to 4 PM</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" name="slot" style="height: auto;" id="inlineRadio2" value="4 PM to 5 PM" formControlName="slot" />
+                                <label class="radio-inline" style="font-size: small;padding-left: 10px;" for="inlineRadio2">
+                                    4 PM to 5 PM
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="center" style="width: 200px; margin: 0 auto;">
+                    <button (click)="confirmAppointment()" style="background-color: white; color: black;"
+                            [disabled]="!appointmentForm.valid">
+                        Confirm Your Appointment
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="empty" style="padding-top: 35px;" [hidden]="!appointmentSuccess">
+    <div class="card bg-secondary mmi" style="width: 30rem; color: white;">
+        <div class="card-body">
+            <h5 class="card-title">{{c.appointmentScheduled }}</h5>
+            <div class="text-center" style="padding-bottom: 10px">
+                <button type="button" style="background-color: rgb(12, 215, 246); width: 100px" (click)="allcoaches()"
+                        class="btn btn-primary">
+                    Go Back
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
